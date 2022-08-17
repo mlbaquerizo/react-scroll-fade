@@ -11,6 +11,7 @@
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "declarationDir": "types",
+    "sourceMap": true,
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
@@ -21,6 +22,9 @@
     "strict": true,
 
     /* Completeness */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    /* Editor Support */
+    "plugins": [{"name": "typescript-plugin-css-modules"}]
   }
 }
