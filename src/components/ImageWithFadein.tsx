@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useScrollPosition, useWindowDimensions } from '../hooks';
 import styles from './ImageWithFadein.module.css';
 
-interface ImageWithFadeinProps {
+export interface ImageWithFadeinProps {
   src: string;
   width?: number;
   height?: number;

@@ -20,5 +20,5 @@
 .imageVisible {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity 3s ease-in-out;
+  transition: visibility 0s, opacity 3s ease-out;
 }

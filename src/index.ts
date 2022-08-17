@@ -1,1 +1,1 @@
-export { default } from "./components/ImageWithFadein";
+export * from "./components";
