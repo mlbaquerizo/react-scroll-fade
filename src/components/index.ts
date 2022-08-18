@@ -1,1 +1,1 @@
-export { default as ImagewithFadein, ImageWithFadeinProps } from './ImageWithFadein';
+export { default as ImageWithFadein, ImageWithFadeinProps } from './ImageWithFadein';
