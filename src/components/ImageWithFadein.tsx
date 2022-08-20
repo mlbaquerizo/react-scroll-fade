@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useScrollPosition, useWindowDimensions } from '../hooks';
 import styles from './ImageWithFadein.module.css';
 
@@ -36,26 +36,38 @@ const ImageWithFadein = ({
   centerOffset = 0,
 }: ImageWithFadeinProps) => {
   const [imageHeight, setImageHeight] = useState<number>();
-
-  const scrollPosition = useScrollPosition();
-
+  
+  const [inlineImageStyles, setInlineImageStyles] = useState<{top: string | number | undefined}>();
+  
   const { height: viewportHeight, width: viewportWidth } = useWindowDimensions();
-
+  
+  const isMobileWidth = viewportWidth < WIDTH_BREAKPOINT;
+  
+  const fixedBreakpoint = (viewportHeight * (scrollTo / 100)) - (viewportHeight * (imageTop / 100));
+  
+  const scrollPosition = useScrollPosition();
+  
+  const [isImageInView, setIsImageInView] = useState(scrollPosition >= fixedBreakpoint);
+  
+  useEffect(() => {
+    setIsImageInView(scrollPosition >= fixedBreakpoint);
+  }, [scrollPosition, fixedBreakpoint]);
+  
+  useEffect(() => {
+    if (imageHeight && isImageInView) {
+      setInlineImageStyles({
+        top: `calc(${imageTop}vh - ${imageHeight}px)`
+      });
+    } else {
+      setInlineImageStyles({
+        top: `calc(${scrollTo}vh - ${imageHeight}px)`,
+      })
+    }
+  }, [imageHeight, isImageInView]);
+  
   const getImageHeight = useCallback((e: any) => {
     setImageHeight(e.target.offsetHeight);
   }, [setImageHeight]);
-
-  const fixedBreakpoint = (viewportHeight * (scrollTo / 100)) - (viewportHeight * (imageTop / 100));
-
-  const isImageInView = scrollPosition >= fixedBreakpoint;
-
-  const inlineImageStyles = isImageInView ? {
-    top: `calc(${imageTop}vh - ${imageHeight}px)`,
-  } : {
-    top: `calc(${scrollTo}vh - ${imageHeight}px)`,
-  };
-
-  const isMobileWidth = viewportWidth < WIDTH_BREAKPOINT;
 
   return (
     <div className={styles.imageContainer}>

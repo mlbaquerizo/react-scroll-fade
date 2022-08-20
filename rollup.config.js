@@ -12,8 +12,8 @@ export default [
   {
     input: 'src/index.ts',
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'esm'},
+      { file: pkg.main, format: 'cjs', sourcemap: true },
+      { file: pkg.module, format: 'esm', sourcemap: true },
     ],
     plugins: [
       peerDepsExternal(),
@@ -21,7 +21,6 @@ export default [
       commonjs(),
       typescript({tsconfig: './tsconfig.json'}),
       postcss({
-        extract: true,
         modules: true,
       }),
       terser(),
