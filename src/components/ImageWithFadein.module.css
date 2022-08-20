@@ -1,0 +1,24 @@
+.imageContainer {
+  position: relative; 
+}
+
+.image {
+  position: absolute;
+  left: 50%;
+}
+
+.imageFixed {
+  position: fixed;
+}
+
+.imageInvisible {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s, opacity 0.5s ease-in;
+}
+
+.imageVisible {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 3s ease-out;
+}
