@@ -1,5 +1,5 @@
 {
-  "name": "react-scroll-fade",
+  "name": "@concarne/react-scroll-fade",
   "version": "0.0.1",
   "description": "React component for scrolling to images with fade in and out",
   "main": "dist/cjs/index.js",
