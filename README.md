@@ -10,7 +10,7 @@ The component takes care of smoothly transitioning to and from the image, so the
 ## Usage
 
 ```jsx
-import { ImageWithFadein } from 'react-scroll-fade';
+import { ImageWithFadein } from '@concarne/react-scroll-fade';
 
 const App = () => {
   const imageSrc = './path/to/image.png|gif|jpg|etc';
